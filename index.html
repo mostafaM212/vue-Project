@@ -1,0 +1,59 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/vue.js"></script>
+
+</head>
+<body>
+    <div id="app" class="centre ">
+
+        <div id="names" class="container text-primary" v-if="state">
+            
+            <h1>How Pays the Bill</h1>
+            <div class="input-group input-group-text " style="width: 400px;">
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" v-model="inputName">
+
+                <div class="input-group-prepend">
+                  <button class="input-group-text" id="inputGroup-sizing-sm" v-on:click="addNameToList()">ADD</span>
+                </div>
+              </div>
+                <div class="btn-group" role="group" aria-label="Basic example">
+                   
+                    <ul v-for = "(name , index) in names" class=" list text-success">
+                           <li v-text="name" v-on:click= "removeName(index)" ></li>
+                    </ul>
+                
+              </div>
+              
+            <div class="text-danger errors" v-if="showErrors">
+                <span>this field is required</span>
+            </div>
+
+           
+        </div>
+        <div class="btn-group container" role="group" aria-label="Basic example" v-if="lenght > 1 && state"  style="width: 400px;">
+            <button type="button" class="btn btn-primary" v-on:click = "showResult()" >show who's looser</button>   
+        
+          </div>
+        <div id="result" class="container" v-if="!state">
+            <div class="result_container text-primary">
+                <h1>The looser is :</h1>
+                <div class="text-success text-lg-400" style="font-size: 100px;"  v-text="result">
+
+                </div>
+                <div class="btn-group container" role="group" aria-label="Basic example" v-if="lenght > 1 "  style="width: 300px;">
+                    <button type="button" class="btn btn-danger" v-on:click = "resetApp()" >Start Again</button>   
+                
+                  </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+    <script src="js/main.js"></script>
+</html>
